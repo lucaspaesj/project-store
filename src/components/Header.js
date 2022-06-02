@@ -1,28 +1,31 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 class Header extends React.Component {
   render() {
     const { storageList } = this.props;
     return (
       <header className="cart-text">
-        <h1>Comercio dos Piadistas</h1>
+        <h1>Luca&apos;s Store</h1>
         <div className="login-cart">
           <p>login</p>
           <div>
-            <span className="material-symbols-outlined">
-              shopping_cart
-            </span>
-            <div className="count-cart">
-              {storageList && (
-                <h2
-                  data-testid="shopping-cart-size"
-                >
-                  {storageList.length}
+            <Link to="/cart">
+              <span className="material-symbols-outlined">
+                shopping_cart
+              </span>
+              <div className="count-cart">
+                {storageList && (
+                  <h2
+                    data-testid="shopping-cart-size"
+                  >
+                    {storageList.length}
 
-                </h2>
-              )}
-            </div>
+                  </h2>
+                )}
+              </div>
+            </Link>
           </div>
         </div>
       </header>
@@ -32,8 +35,19 @@ class Header extends React.Component {
 
 Header.propTypes = {
   storageList: PropTypes.arrayOf(
-    {},
-  ).isRequired,
+    PropTypes.shape({
+      available_quantity: PropTypes.number,
+      pictures: PropTypes.arrayOf(
+        PropTypes.shape({
+          url: PropTypes.string,
+        }),
+      ),
+    }),
+  ),
+};
+
+Header.defaultProps = {
+  storageList: '',
 };
 
 export default Header;

@@ -5,6 +5,7 @@ import './styles/home.css';
 import './styles/cart-style.css';
 import './styles/header.css';
 import './styles/footer.css';
+import './styles/details.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 

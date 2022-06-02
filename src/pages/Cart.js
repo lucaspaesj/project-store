@@ -77,7 +77,7 @@ class Cart extends React.Component {
           <section className="cards-content">
             {!empty ? (
               productListReduced.map((product) => (
-                <section key={ product.id } className="product-card">
+                <section key={ product.id } className="product-cart">
                   <h1 data-testid="shopping-cart-product-quantity">
                     {
                       productList
@@ -86,8 +86,9 @@ class Cart extends React.Component {
                           .filter((item) => item.id === product.id)
                           .length
                     }
+                    {' unidades'}
                   </h1>
-                  <div data-testid="product">
+                  <div data-testid="product" className="productInfos">
                     <img src={ product.thumbnail } alt={ product.title } />
                     <h4>
                       Preço:
@@ -95,13 +96,6 @@ class Cart extends React.Component {
                     </h4>
                     <p data-testid="shopping-cart-product-name">{ product.title }</p>
                   </div>
-                  <button
-                    type="button"
-                    data-testid="product-add-to-cart"
-                  // onClick={ () => this.handleBtnCart(product.id) }
-                  >
-                    Remover do Carrinho
-                  </button>
                   <QuantityCart
                     quantityProduct={ productList
                       .filter((item) => item.id === product.id)

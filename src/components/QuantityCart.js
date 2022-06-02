@@ -25,6 +25,7 @@ class QuantityCart extends React.Component {
     return (
       <div className="increaseDecreaseItem">
         <button
+          style={ { borderRadius: '5px' } }
           type="button"
           onClick={ this.handleBtnDecrease }
           data-testid="product-decrease-quantity"
@@ -38,6 +39,7 @@ class QuantityCart extends React.Component {
           onChange={ this.handleInputQuantity }
         />
         <button
+          style={ { borderRadius: '5px' } }
           type="button"
           value={ max }
           onClick={ this.handleBtnIncrease }

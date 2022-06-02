@@ -1,12 +1,11 @@
 import React from 'react';
-import { Redirect, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import Footer from '../components/Footer';
 import Header from '../components/Header';
 import { getCategories, getProductsFromCategoryAndQuery } from '../services/api';
 
 class Home extends React.Component {
   state = {
-    redirect: false,
     queryInput: '',
     categories: '',
     products: [],
@@ -30,13 +29,6 @@ class Home extends React.Component {
     const categoriesList = await getCategories();
     this.setState({ categories: categoriesList });
   };
-
-  // arrumando git
-  handleBtnCart = () => {
-    this.setState({
-      redirect: true,
-    });
-  }
 
   handleBtnSearch = async ({ target }) => {
     const { name } = target;
@@ -83,13 +75,7 @@ class Home extends React.Component {
   }
 
   render() {
-    const { categories,
-      redirect, queryInput, products, searched, storageList } = this.state;
-    if (redirect) {
-      return (
-        <Redirect to="/cart" />
-      );
-    }
+    const { categories, queryInput, products, searched, storageList } = this.state;
     return (
       <section className="main-content">
         <Header storageList={ storageList } />
@@ -111,32 +97,25 @@ class Home extends React.Component {
             ))}
           </div>
           <section className="products-content">
-            <div className="cart-text">
+            <div className="cart-text-search">
               <h3 data-testid="home-initial-message">
                 Digite algum termo de pesquisa ou escolha uma categoria.
               </h3>
             </div>
             <section className="search-bar">
-              <button
-                data-testid="shopping-cart-button"
-                type="button"
-                onClick={ this.handleBtnCart }
-              >
-                Cart
-              </button>
-              <label htmlFor="inputSearch">
-                <input
-                  type="text"
-                  id="query-input"
-                  name="queryInput"
-                  data-testid="query-input"
-                  value={ queryInput }
-                  onChange={ this.handleChange }
-                />
-              </label>
+              <input
+                type="text"
+                id="query-input"
+                name="queryInput"
+                className="inputSearchItem"
+                data-testid="query-input"
+                value={ queryInput }
+                onChange={ this.handleChange }
+              />
               <button
                 data-testid="query-button"
                 type="button"
+                className="btnSearchItem"
                 onClick={ this.handleBtnSearch }
                 name={ queryInput }
               >

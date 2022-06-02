@@ -63,6 +63,23 @@
 
 .search-bar {
   margin-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+
+.cart-text-search {
+  text-align: center;
+}
+
+.inputSearchItem {
+  width: 70%;
+  border-radius: 5px;
+  height: 20px;
+}
+
+.btnSearchItem {
+  border-radius: 5px;
 }
 
 .product-card img {

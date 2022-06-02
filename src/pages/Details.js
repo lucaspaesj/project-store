@@ -16,6 +16,7 @@ class Details extends React.Component {
       evaluations: [],
       hasEvaluations: false,
       idItem: '',
+      itemPicture: '',
     }
 
     componentDidMount() {
@@ -33,6 +34,7 @@ class Details extends React.Component {
         product: data,
         productList: list,
         idItem: id,
+        itemPicture: data.pictures[0].url,
       });
     }
 
@@ -112,75 +114,84 @@ class Details extends React.Component {
     }
 
     render() {
-      const { product: { price, thumbnail, title }, redirect,
-        email, mensagem, evaluations, hasEvaluations } = this.state;
+      const { product: { price, title, available_quantity }, redirect,
+        email, mensagem, evaluations, hasEvaluations, itemPicture } = this.state;
       if (redirect) {
         return (
           <Redirect to="/cart" />
         );
       }
       return (
-        <>
+        <div className="content-details">
           <Header storageList={ JSON.parse(localStorage.getItem('productId')) } />
-          <p data-testid="product-detail-name">{ title }</p>
-          <img src={ thumbnail } alt={ title } />
-          <p>{ price }</p>
-          <button
-            type="button"
-            data-testid="product-detail-add-to-cart"
-            onClick={ this.handleBtnAddCart }
-          >
-            Adicionar ao Carrinho
-          </button>
-          <div>
+          <div className="details-item">
+            <h1 data-testid="product-detail-name">{ title }</h1>
+            <img
+              src={ itemPicture }
+              alt={ title }
+              style={ { width: '13%' } }
+            />
+            <p>
+              {`Preço: R$${price}`}
+            </p>
+            <p>
+              {`Disponibilidade no estoque: ${available_quantity} itens`}
+            </p>
             <button
-              data-testid="shopping-cart-button"
               type="button"
-              onClick={ this.handleBtnCart }
+              data-testid="product-detail-add-to-cart"
+              onClick={ this.handleBtnAddCart }
             >
-              Carrinho de compras
+              Adicionar ao Carrinho
             </button>
           </div>
-          <div>
-            <h3>Avaliação</h3>
-            <form>
-              <label htmlFor="email">
-                <input
-                  type="email"
-                  id="email"
-                  value={ email }
-                  name="email"
-                  data-testid="product-detail-email"
-                  placeholder="E-mail"
-                  onChange={ this.handleChange }
-                />
-              </label>
-              <br />
-              <InputRating handleChange={ this.handleChange } />
-              <label htmlFor="mensagem">
-                <textarea
-                  type="text"
-                  id="mensagem"
-                  value={ mensagem }
-                  name="mensagem"
-                  placeholder="Mensagem (opcional)"
-                  data-testid="product-detail-evaluation"
-                  onChange={ this.handleChange }
-                />
-              </label>
-              <br />
-              <button
-                type="submit"
-                data-testid="submit-review-btn"
-                onClick={ this.handleSubmit }
-              >
-                Avaliar
-              </button>
-            </form>
+          <div className="evaluations">
+            <fieldset>
+              <legend>Avaliar item</legend>
+              <form className="formEvaluate">
+                <label htmlFor="email">
+                  <input
+                    type="email"
+                    id="email"
+                    value={ email }
+                    className="inputEmail"
+                    name="email"
+                    data-testid="product-detail-email"
+                    placeholder="Seu e-mail"
+                    onChange={ this.handleChange }
+                  />
+                </label>
+                <div>
+                  Nota:
+                  <InputRating handleChange={ this.handleChange } />
+                </div>
+                <label htmlFor="mensagem">
+                  <textarea
+                    type="text"
+                    id="mensagem"
+                    value={ mensagem }
+                    name="mensagem"
+                    className="mensagemTextArea"
+                    placeholder="Mensagem (opcional)"
+                    data-testid="product-detail-evaluation"
+                    onChange={ this.handleChange }
+                  />
+                </label>
+                <button
+                  type="submit"
+                  data-testid="submit-review-btn"
+                  className="btnEvaluate"
+                  onClick={ this.handleSubmit }
+                >
+                  Avaliar
+                </button>
+              </form>
+            </fieldset>
             {hasEvaluations && (
               <div className="evaluations">
+                <h3>Avaliações de compradores:</h3>
                 {hasEvaluations && evaluations.map((evaluation) => (
-                  <div key={ evaluation.email }>
+                  <div className="evaluations" key={ evaluation.email }>
                     <input
                       type="radio"
                       value="1"
@@ -221,7 +232,7 @@ class Details extends React.Component {
               </div>)}
           </div>
           <Footer />
-        </>
+        </div>
       );
     }
 }
