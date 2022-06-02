@@ -116,3 +116,7 @@
 .formCheckout h1 {
   text-align: center;
 }
+
+.linkHome {
+  text-decoration: none;
+}

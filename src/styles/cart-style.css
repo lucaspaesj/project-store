@@ -63,3 +63,17 @@
   flex-direction: column;
   align-items: center;
 }
+
+.cards-content-buy {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 3em;
+  padding-top: 20px;
+  padding-bottom: 5rem;
+}
+
+.btnCardCheckout {
+  width: 10%;
+  margin: 0 auto;
+  border-radius: 10px;
+}

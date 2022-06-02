@@ -9,6 +9,9 @@ class Header extends React.Component {
       <header className="cart-text">
         <h1>Luca&apos;s Store</h1>
         <div className="login-cart">
+          <Link className="linkHome" to="/">
+            <p>home</p>
+          </Link>
           <p>login</p>
           <div>
             <Link to="/cart">

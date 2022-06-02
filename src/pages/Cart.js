@@ -6,7 +6,7 @@ import QuantityCart from '../components/QuantityCart';
 
 class Cart extends React.Component {
   state = {
-    productList: '',
+    productList: [],
     productListReduced: [],
     empty: true,
     redirect: false,
@@ -74,7 +74,7 @@ class Cart extends React.Component {
       <>
         <div className="main-content">
           <Header storageList={ productList } />
-          <section className="cards-content">
+          <section className="cards-content-buy">
             {!empty ? (
               productListReduced.map((product) => (
                 <section key={ product.id } className="product-cart">
@@ -89,7 +89,11 @@ class Cart extends React.Component {
                     {' unidades'}
                   </h1>
                   <div data-testid="product" className="productInfos">
-                    <img src={ product.thumbnail } alt={ product.title } />
+                    <img
+                      style={ { width: '30%' } }
+                      src={ product.thumbnail }
+                      alt={ product.title }
+                    />
                     <h4>
                       Preço:
                       { product.price }
@@ -115,23 +119,24 @@ class Cart extends React.Component {
                   Seu carrinho está vazio
                 </p>
               )}
-            <button
-              data-testid="checkout-products"
-              type="button"
-              onClick={ this.handleBtnCheckout }
-            >
-              Finalizar compra
-              {productList && (
-                <h2
-                  data-testid="shopping-cart-size"
-                >
-                  {productList.length}
-
-                </h2>
-              )}
-
-            </button>
           </section>
+          <button
+            data-testid="checkout-products"
+            type="button"
+            className="btnCardCheckout"
+            onClick={ this.handleBtnCheckout }
+          >
+            Finalizar compra
+            {productList && (
+              <h2
+                data-testid="shopping-cart-size"
+              >
+                {productList.length}
+
+              </h2>
+            )}
+
+          </button>
         </div>
         <Footer />
       </>

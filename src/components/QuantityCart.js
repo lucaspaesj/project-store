@@ -56,7 +56,10 @@ QuantityCart.propTypes = {
   handleQuantity: PropTypes.func.isRequired,
   id: PropTypes.string.isRequired,
   quantityProduct: PropTypes.number.isRequired,
-  max: PropTypes.string,
+  max: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.bool,
+  ]),
 };
 
 QuantityCart.defaultProps = {
