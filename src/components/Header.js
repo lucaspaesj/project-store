@@ -7,7 +7,7 @@ class Header extends React.Component {
     const { storageList } = this.props;
     return (
       <header className="cart-text">
-        <h1>Luca&apos;s Store</h1>
+        <h1>Luca&apos;store</h1>
         <div className="login-cart">
           <Link className="linkHome" to="/">
             <p>home</p>
