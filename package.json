@@ -11,16 +11,13 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "3.4.1"
   },
-  "homepage": "https://lucaspaesj.github.io/project-store",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "lint": "eslint --no-inline-config --no-error-on-unmatched-pattern -c .eslintrc.json . --ext .js,.jsx",
-    "lint:styles": "npx stylelint '**/*.css'",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "lint:styles": "npx stylelint '**/*.css'"
   },
   "browserslist": {
     "production": [
