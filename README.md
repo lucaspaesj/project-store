@@ -1,16 +1,3 @@
-# 🚧 README em construção 🚧
+Este é um projeto que visa demonstrar o funcionamento de um e-commerce, no qual coloquei em prática diversos conhecimentos, como React, JS, CSS, Tests, APIs.
 
-<!-- Olá, Tryber!
-
-Esse é apenas um arquivo inicial para o README do seu projeto.
-
-É essencial que você preencha esse documento por conta própria, ok?
-
-Não deixe de usar nossas dicas de escrita de README de projetos, e deixe sua criatividade brilhar!
-
-⚠️ IMPORTANTE: você precisa deixar nítido:
-- quais arquivos/pastas foram desenvolvidos por você; 
-- quais arquivos/pastas foram desenvolvidos por outra pessoa estudante;
-- quais arquivos/pastas foram desenvolvidos pela Trybe.
-
--->
+This is a project that aims to demonstrate the functioning of an e-commerce, in which I put into practice various knowledge, such as React, JS, CSS, Tests, APIs.
